@@ -1,0 +1,93 @@
+Converted host from MBR to UEFI using the mbr2gpt tool
+Created a new partition by shrinking the main partition in disk 0
+created usb for ubuntu 22.04 using rufus, selected iso(not freedos or msdos) and GPT
+changed legacy to uefi in bios
+disabled the secure boot
+had to go to advanced boot options in windows to get the USB to get selected during restart
+----------------------------
+After install
+------------------------------
+sudo apt install net-tools
+sudo apt  install curl  
+----------------R-------------
+sudo apt install r-base-core
+--------------------------------
+sudo apt-get install chromium-browser
+-----------------------------gcc---------------
+sudo apt install default-jdk
+sudo apt install gcc 
+sudo apt install maven 
+--------------------intellij-------------------
+sudo snap install intellij-idea-community --classic
+intellij-idea-community ( to invoke)
+------------------eclipse----------------------
+sudo snap install --classic eclipse
+sudo apt update
+------------------vs code----------------------
+sudo snap install --classic code
+
+sudo apt update 
+-----Libre office
+sudo snap install libreoffice
+----------------git------
+sudo apt install git
+sreedhar@sreedhar-OptiPlex-3010:~$ git config --global user.name "Madhu Sreedhar"
+sreedhar@sreedhar-OptiPlex-3010:~$ git config --global user.email "MadhuKSreedhar@gmail.com"
+sreedhar@sreedhar-OptiPlex-3010:~$ git config --list
+user.name=Madhu Sreedhar
+user.email=MadhuKSreedhar@gmail.com
+
+install extensions from Git (pull requests, codespaces, repositories)
+
+----------------------
+in Downloads folder
+sudo adduser activemq
+wget https://dlcdn.apache.org//activemq/6.1.2/apache-activemq-6.1.2-bin.tar.gz
+tar xzf apache-activemq-6.1.2-bin.zip
+
+sudo mv *.gz /opt/
+sudo mv unzipped folder also to /opt
+
+sudo nano /opt/apache-activemq-6.1.2/conf/jetty.xml
+( you can change localhost or 127.0.0.1 to 0.0.0.0)
+
+sudo nano /etc/systemd/system/activemq.service 
+--add following
+After=network-online.target
+
+[Service]
+Type=forking
+
+User=activemq
+Group=activemq
+
+WorkingDirectory=/opt/apache-activemq-6.1.2/bin
+ExecStart=/opt/apache-activemq-6.1.2/bin/activemq start
+ExecStop=/opt/apache-activemq-6.1.2/bin/activemq stop
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
+---------
+Give access to users
+setfacl -m u:activemq:rwx /opt/apache-activemq-6.1.2/data/
+
+Now reload the systemctl daemon to read the new configuration file.
+sudo systemctl daemon-reload 
+
+After that, enable the ActiveMQ systemd service to auto-start on system boot. Also, start the service.
+sudo systemctl enable activemq.service 
+sudo systemctl start activemq.service 
+
+Once the service is started, make sure that ActiveMQ service is up and running:
+sudo systemctl status activemq.service 
+
+sudo systemctl stop activemq.service 
+
+Now, open a browser and access
+http://server-ip:8161/ 
+-------------------------------
+uncommented waylandenable=false in sudo nano /etc/gdm3/custom.conf to force Xorg
+------------------------------
+
+

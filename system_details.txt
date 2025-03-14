@@ -1,0 +1,9 @@
+list memory
+sudo dmidecode --type memory | less
+---------------------------------------
+List all users
+awk -F: '{ print $1 }' /etc/passwd 
+------------------give folder access to users---------------------
+setfacl -m u:username:rwx myfolder
+setfacl -m u:activemq:rwx /opt/apache-activemq-6.1.2/data/
+---------------------------------------

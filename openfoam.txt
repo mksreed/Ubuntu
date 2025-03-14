@@ -1,0 +1,66 @@
+03/11/2025
+https://develop.openfoam.com/Development/openfoam/-/wikis/precompiled/debian
+# Add the repository
+curl https://dl.openfoam.com/add-debian-repo.sh | sudo bash
+
+# Update the repository information
+sudo apt-get update
+
+# Install preferred package. Eg,
+sudo apt-get install openfoam2406-default
+
+# Use the openfoam shell session. Eg,
+openfoam2406
+
+-----------------------------------------screen dump below
+* Different ways to setup OpenFOAM (www.openfoam.com)
+** - shell session:                 /usr/bin/openfoam2406
+** - select for login shell:        openfoam-selector --set openfoam2406
+** - source from ~/.bashrc file:  . /usr/lib/openfoam/openfoam2406/etc/bashrc
+**
+** Upgrade information: www.openfoam.com/documentation/
+**
+Setting up libcoarrays-openmpi-dev:amd64 (2.10.2+ds-2.1build2) ...
+update-alternatives: using /usr/lib/x86_64-linux-gnu/open-coarrays/openmpi/bin/caf to provide /usr/bin/caf.openmpi (caf-openmpi) in auto mode
+update-alternatives: using /usr/bin/caf.openmpi to provide /usr/bin/caf (caf) in auto mode
+Setting up mpi-default-dev (1.15build1) ...
+Setting up libscotch-dev (7.0.4-1ubuntu2) ...
+Setting up libptscotch-dev (7.0.4-1ubuntu2) ...
+Setting up openfoam2406-dev:amd64 (2406.241212-3) ...
+Setting up openfoam2406-default:amd64 (2406.241212-3) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for install-info (7.1-3build2) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.4) ...
+sreedhar@sreedhar-OptiPlex-3010:~/Documents/openFOAM$ 
+---------------------
+sreedhar@sreedhar-OptiPlex-3010:~/Documents/openFOAM$ openfoam2406
+openfoam = /usr/lib/openfoam/openfoam2406
+
+ * Using:     OpenFOAM-v2406 (2406) - visit www.openfoam.com
+ * Build:     _9bfe8264-20241212 (patch=241212)
+ * Arch:      label=32;scalar=64
+ * Platform:  linux64GccDPInt32Opt (mpi=sys-openmpi)
+
+OpenFOAM shell session - use 'exit' to quit
+
+openfoam2406:~/Documents/openFOAM/
+sreedhar$ 
+-----------------------------------------screen dump ends
+
+sudo apt-get install paraview
+
+Steps
+source /usr/lib/openfoam/openfoam2406/etc/bashrc
+mkdir -p $FOAM_RUN
+cd $FOAM_RUN
+cp -r $FOAM_TUTORIALS/incompressible/simpleFoam/pitzDaily .
+cp -r $FOAM_TUTORIALS .    (to make a local copy)
+run
+cd pitzDaily
+blockMesh
+simpleFoam
+paraFoam (or try touch para.Foam and drag that into paraview)
+
+
+
+

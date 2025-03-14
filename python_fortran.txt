@@ -1,0 +1,51 @@
+python3 --version 
+sudo apt update
+sudo apt install python3-pip
+pip3 --version
+sudo apt install python3-numpy
+sudo apt install python3-pandas
+sudo apt install python3-matplotlib
+sudo apt install python3-ipykernel
+# did not use pip3
+
+###################################
+sudo apt-get install gfortran
+INstalled Modern Fortran
+Fortran Break Point Support by ekibun
+Madhu sure C/C++ by Microsoft was already installed
+----------------------------tasks.json
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "build",
+            "command": "/usr/bin/gfortran",
+            "args": [
+                "-g",
+                "-Wall",
+                ""${fileDirname}/${fileBasename}""
+            ],
+        }
+    ],
+    "version": "2.0.0"
+}
+-----------------------------launch.json
+{
+  "configurations": [
+  {  
+    "name": "Run GDB",
+    "type": "cppdbg",
+    "request": "launch",
+    "program": "${workspaceRoot}/a.out",
+    "args": [],
+    "stopAtEntry": false,
+    "cwd": "${workspaceRoot}",
+    "externalConsole": false,
+    "MIMode": "gdb",
+    "preLaunchTask": "build"
+  }
+  ]
+}
+-----------------------------------
+
+
